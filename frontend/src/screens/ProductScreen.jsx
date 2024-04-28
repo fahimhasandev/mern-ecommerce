@@ -27,7 +27,7 @@ const ProductScreen = () => {
   const {
     data: product,
     isLoading,
-    error,
+    error,  
   } = useGetProductDetailsQuery(productId);
 
   //add to cart handler

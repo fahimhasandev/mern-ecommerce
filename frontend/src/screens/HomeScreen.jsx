@@ -3,22 +3,9 @@ import Product from '../components/Product';
 import { useGetProductsQuery } from '../slices/productApiSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
 
 const HomeScreen = () => {
   const { data: products, isloading, error } = useGetProductsQuery();
-
-  // const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     const { data } = await axios.get('/api/products');
-  //     setProducts(data);
-  //   };
-
-  //   fetchProducts();
-  // }, []);
 
   return (
     <>

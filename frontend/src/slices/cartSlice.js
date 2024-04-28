@@ -3,8 +3,9 @@ import { updateCart } from '../utils/cartUtils';
 
 const initialState = localStorage.getItem('cart')
   ? JSON.parse(localStorage.getItem('cart'))
-  : { cartItems: [] };
+  : { cartItems: [], shippingAddress: {}, paymentMethod: 'PayPal' };
 
+// A reducer is a function that takes in the current state and an action, and returns a new state
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -35,9 +36,20 @@ const cartSlice = createSlice({
       // update cart
       return updateCart(state);
     },
+    saveShippingAddress: (state, action) => {
+      // state.shippingAddress --> The part of the Redux state we're updating
+      // action.payload --> The data we sent with the dispatched action
+      state.shippingAddress = action.payload;
+      return updateCart(state);
+    },
+    savePaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
+      return updateCart(state);
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
