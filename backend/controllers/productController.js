@@ -11,7 +11,6 @@ const getProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
-
 /*
     @desc   Fetch single product
     @route  GET/ api/product
